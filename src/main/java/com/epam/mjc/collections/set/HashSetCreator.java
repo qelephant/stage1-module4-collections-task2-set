@@ -5,20 +5,31 @@ import java.util.List;
 
 public class HashSetCreator {
     public HashSet<Integer> createHashSet(List<Integer> sourceList) {
-        HashSet<Integer> result = new HashSet<>();
-        
-        for (Integer num : sourceList) {
-            if (num % 2 == 0) {
-                while (num % 2 == 0) {
-                    result.add(num);
-                    num /= 2;
+
+        HashSet<Integer> hashSet = new HashSet<>();
+
+        for (Integer integer : sourceList) {
+            System.out.println(integer);
+        }
+
+        for (Integer integer : sourceList) {
+
+            if (isEven(integer)) {
+                int getter = integer;
+                while (isEven(getter)) {
+                    hashSet.add(getter);
+                    getter /= 2;
                 }
+                hashSet.add(getter);
             } else {
-                result.add(num);
-                result.add(2 * num);
+                hashSet.add(integer);
+                hashSet.add(integer * 2);
             }
         }
-        
-        return result;
+        return hashSet;
+    }
+
+    public boolean isEven(int a) {
+        return a % 2 == 0;
     }
 }
